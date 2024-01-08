@@ -142,30 +142,3 @@ function include_template($name, array $data = []) {
 
     return $result;
 }
-
-
-/**
- * Функция должна возвращать результат — отформатированную сумму вместе со знаком рубля
- * Функция должна принимать один аргумент — целое число
- *
- * Пример использования:
- * $number = 123456;
- * 
- * get_format_number($number);
- * 
- * Результат: "10 000 ₽"
- *
- * @param int $number 
- *
- * @return string Добавить к итоговой строке пробел и знак рубля — ₽.
- */
-
-function get_format_number($number) {
-    $number = ceil($number);
-
-    if ($number > 1000) {
-        $number = number_format($number, 0, '', ' ');
-    }
-
-    return $number . " " . "₽";
-}
