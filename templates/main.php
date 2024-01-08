@@ -1,5 +1,5 @@
 <?php
-require_once("helpers.php");
+require_once("functions.php");
 ?>
 
 <section class="promo">
@@ -33,8 +33,9 @@ require_once("helpers.php");
               <span class="lot__amount">Стартовая цена</span>
               <span class="lot__cost"><?= get_format_number(htmlspecialchars($good["price"])) ?></span>
             </div>
-            <div class="lot__timer timer">
-              12:23
+            <?php $res = get_time_left(htmlspecialchars($good['expiration'])); ?>
+            <div class="lot__timer timer <?php if ($res[0] < 1): ?>timer--finishing<?php endif; ?>">
+              <?=$res[0] . ":" . $res[1]; ?>
             </div>
           </div>
         </div>
