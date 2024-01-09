@@ -16,8 +16,7 @@
  * @return string Добавить к итоговой строке пробел и знак рубля — ₽.
  */
 
-function get_format_number($number)
-{
+function get_format_number($number) {
   $number = ceil($number);
 
   if ($number > 1000) {
