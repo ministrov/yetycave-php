@@ -16,15 +16,14 @@
  * @return string Добавить к итоговой строке пробел и знак рубля — ₽.
  */
 
-function get_format_number($number)
-{
+function get_format_number($number) {
   $number = ceil($number);
 
   if ($number > 1000) {
     $number = number_format($number, 0, '', ' ');
   }
 
-  return $number . " " . "₽";
+  return "$number ₽";
 }
 
 
