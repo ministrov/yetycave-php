@@ -23,7 +23,7 @@ function get_format_number($number) {
     $number = number_format($number, 0, '', ' ');
   }
 
-  return $number . " " . "₽";
+  return "$number ₽";
 }
 
 
