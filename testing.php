@@ -1,15 +1,15 @@
 <?php
 
-$con = mysqli_connect("localhost", "root", "", "yeticave");
-$sql = "SELECT * FROM categories";
-$result = mysqli_query($con, $sql);
+// $con = mysqli_connect("localhost", "root", "", "yeticave");
+// $sql = "SELECT * FROM categories";
+// $result = mysqli_query($con, $sql);
 
-$result_row = mysqli_fetch_assoc($result);
+// $result_row = mysqli_fetch_assoc($result);
 
-// $result_count = mysqli_num_rows($result);
+// // $result_count = mysqli_num_rows($result);
 
-// print(json_encode($result_row));
-print($result_row);
+// // print(json_encode($result_row));
+// print($result_row);
 
 // $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
