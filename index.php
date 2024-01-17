@@ -1,14 +1,33 @@
 <?php
 // require_once("testing.php");
 require_once("helpers.php");
+require_once("functions.php");
 require_once("data.php");
-$db = require_once("db.php");
+require_once("init.php");
+require_once("models.php");
 
-$link = mysqli_connect($db["host"], $db["user"], $db["password"], $db["database"]);
+if (!$connect) {
+    $error = mysqli_connect_error();
+} else {
+    $sql = "SELECT character_code, name_category FROM categories";
+    $result = mysqli_query($connect, $sql);
 
-mysqli_set_charset($link, "utf8");
+    if ($result) {
+        $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    } else {
+        $error = mysqli_error($connect);
+    }
+}
 
-print_r($db);
+$sql = get_query_list_lots('2021-07-15');
+
+$res = mysqli_query($connect, $sql);
+
+if ($res) {
+    $goods = mysqli_fetch_all($res, MYSQLI_ASSOC);
+} else {
+    $error = mysqli_errno($connect);
+}
 
 $page_content = include_template("main.php", [
     "categories" => $categories,
