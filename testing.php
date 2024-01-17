@@ -1,10 +1,30 @@
 <?php
 
-$var_1 = 0;
+$peace = 'World';
 
-$var_2 = (bool)$var_1;
+$msg = "Hello $peace";
 
-var_dump($var_2);
+function show_message(string $txt) {
+  print($txt);
+}
+
+show_message($msg);
+
+// $arr = array(1, 2, 5, 6);
+
+// foreach ($arr as $value) {
+//   print_r($value);
+// }
+
+// var_dump($arr);
+
+// print_r($arr);
+
+// $var_1 = 0;
+
+// $var_2 = (bool)$var_1;
+
+// var_dump($var_2);
 
 // var_dump($var_1);
 
