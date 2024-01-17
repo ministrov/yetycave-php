@@ -1,5 +1,31 @@
 <?php
 
+$var_1 = 0;
+
+$var_2 = (bool)$var_1;
+
+var_dump($var_2);
+
+// var_dump($var_1);
+
+// $x = 15;
+
+// print_r($x);
+
+// echo $_SERVER['DOCUMENT_ROOT'];
+
+// echo PHP_OS . "<br>";
+// echo PHP_VERSION . "<br>";
+
+// if (isset($x) > 0) {
+//   print(isset($x));
+// }
+
+// unset($x);
+
+// print($x);
+
+// print_r(get_defined_constants()); Output all constant in PHP
 // $con = mysqli_connect("localhost", "root", "", "yeticave");
 // $sql = "SELECT * FROM categories";
 // $result = mysqli_query($con, $sql);
