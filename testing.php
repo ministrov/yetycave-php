@@ -1,14 +1,21 @@
 <?php
 
-$peace = 'World';
+$header = $_SERVER['HTTP_ACCEPT'];
 
-$msg = "Hello $peace";
+print_r($header);
+// $header = headers_list();
 
-function show_message(string $txt) {
-  print($txt);
-}
+// print_r($header);
 
-show_message($msg);
+// $peace = 'World';
+
+// $msg = "Hello $peace";
+
+// function show_message(string $txt) {
+//   print($txt);
+// }
+
+// show_message($msg);
 
 // $arr = array(1, 2, 5, 6);
 
