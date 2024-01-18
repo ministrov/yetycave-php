@@ -1,8 +1,10 @@
 <?php
 
 $header = $_SERVER['HTTP_ACCEPT'];
+$query_parameter = $_GET;
 
-print_r($header);
+print_r($header . "<br>");
+print_r($query_parameter);
 // $header = headers_list();
 
 // print_r($header);
