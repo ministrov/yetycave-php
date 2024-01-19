@@ -1,10 +1,19 @@
 <?php
+require_once("functions.php");
 
-$header = $_SERVER['HTTP_ACCEPT'];
-$query_parameter = $_GET;
+$arr = [1, 3, 4, 6, 7];
 
-print_r($header . "<br>");
-print_r($query_parameter);
+foreach ($arr as $item) {
+  console_log($item);
+}
+
+// $header = $_SERVER['HTTP_ACCEPT'];
+// $query_parameter = $_GET;
+
+// print_r($header . "<br>");
+// print_r($query_parameter);
+
+// console_log($header);
 // $header = headers_list();
 
 // print_r($header);

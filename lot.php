@@ -10,6 +10,7 @@ if (!$connect) {
 } else {
   $sql = "SELECT character_code, name_category FROM categories";
   $result = mysqli_query($connect, $sql);
+  console_log($result);
   if ($result) {
     $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
   } else {
