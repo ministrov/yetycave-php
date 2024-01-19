@@ -20,8 +20,8 @@ require_once("functions.php");
   </div>
   <ul class="lots__list">
     <!--заполните этот список из массива с товарами-->
-    <?php 
-      console_log($goods);
+    <?php
+    console_log($goods);
     ?>
     <?php foreach ($goods as $good) : ?>
       <li class="lots__item lot">
