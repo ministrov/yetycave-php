@@ -19,6 +19,9 @@ if (!$connect) {
 }
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+print_r(gettype($id));
+
 if ($id) {
   $sql = get_query_lot($id);
 } else {
@@ -28,7 +31,9 @@ if ($id) {
 
 $res = mysqli_query($connect, $sql);
 if ($res) {
+
   $lot = mysqli_fetch_assoc($res);
+  print_r($lot);
 } else {
   $error = mysqli_error($connect);
 }

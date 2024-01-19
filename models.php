@@ -8,7 +8,7 @@
 
 function get_query_list_lots($date)
 {
-  return "SELECT lots.title, lots.start_price, lots.img, lots.date_finish, categories.name_category FROM lots
+  return "SELECT lots.id ,lots.title, lots.start_price, lots.img, lots.date_finish, categories.name_category FROM lots
   JOIN categories ON lots.category_id=categories.id
   WHERE date_creation > $date ORDER BY date_creation DESC";
 }
@@ -21,7 +21,7 @@ function get_query_list_lots($date)
 
 function get_query_lot($id_lot)
 {
-  return "SELECT lots.title, lots.start_price, lots.img, lots.date_finish, lots.lot_description, categories.name_category FROM lots
+  return "SELECT lots.id, lots.title, lots.start_price, lots.img, lots.date_finish, lots.lot_description, categories.name_category FROM lots
   JOIN categories ON lots.category_id=categories.id
   WHERE lots.id=$id_lot;";
 }

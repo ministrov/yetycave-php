@@ -1,3 +1,7 @@
+<?php
+require_once("functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -56,7 +60,6 @@
       </nav>
       <section class="lot-item container"><?= $content; ?></section>
     </main>
-
   </div>
 
   <footer class="main-footer">

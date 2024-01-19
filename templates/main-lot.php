@@ -1,3 +1,9 @@
+<!-- <!-- <?php 
+// require_once("functions.php");
+
+// console_log($lot);
+?> -->
+
 <h2><?= $lot["title"]; ?></h2>
 <div class="lot-item__content">
   <div class="lot-item__left">
@@ -10,7 +16,7 @@
   <div class="lot-item__right">
     <div class="lot-item__state">
       <?php $res = get_time_left($lot["date_finish"]) ?>
-      <div class="lot-item__timer timer <?php if ($res[0] < 1): ?>timer--finishing<?php endif; ?>">
+      <div class="lot-item__timer timer <?php if ($res[0] < 1) : ?>timer--finishing<?php endif; ?>">
         <?= "$res[0] : $res[1]"; ?>
       </div>
       <div class="lot-item__cost-state">
