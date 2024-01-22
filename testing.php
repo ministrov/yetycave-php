@@ -1,19 +1,17 @@
 <?php
-require_once("functions.php");
+// require_once("functions.php");
 
-$arr = [1, 3, 4, 6, 7];
+// $arr = [1, 3, 4, 6, 7];
 
-foreach ($arr as $item) {
-  console_log($item);
-}
+// foreach ($arr as $item) {
+//   console_log($item);
+// }
 
 // $header = $_SERVER['HTTP_ACCEPT'];
 // $query_parameter = $_GET;
 
 // print_r($header . "<br>");
 // print_r($query_parameter);
-
-// console_log($header);
 // $header = headers_list();
 
 // print_r($header);

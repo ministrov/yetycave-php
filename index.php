@@ -19,19 +19,17 @@ if (!$connect) {
     }
 }
 
+print_r($categories); 
+
 $sql = get_query_list_lots('2021-07-15');
 
 $res = mysqli_query($connect, $sql);
-
-// console_log($res);
 
 if ($res) {
     $goods = mysqli_fetch_all($res, MYSQLI_ASSOC);
 } else {
     $error = mysqli_error($connect);
 }
-
-print_r($res);
 
 $page_content = include_template("main.php", [
     "categories" => $categories,

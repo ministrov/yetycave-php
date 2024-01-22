@@ -5,4 +5,3 @@ $connect = mysqli_connect("localhost", "root", "", "yeticave");
 
 mysqli_set_charset($connect, "utf8");
 
-console_log($connect);

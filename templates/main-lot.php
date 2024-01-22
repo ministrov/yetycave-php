@@ -1,9 +1,3 @@
-<!-- <!-- <?php 
-// require_once("functions.php");
-
-// console_log($lot);
-?> -->
-
 <h2><?= $lot["title"]; ?></h2>
 <div class="lot-item__content">
   <div class="lot-item__left">
