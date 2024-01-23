@@ -20,7 +20,7 @@ if (!$connect) {
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-print_r(var_dump($id));
+// print_r(var_dump($id));
 
 if ($id) {
   $sql = get_query_lot($id);

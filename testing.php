@@ -1,8 +1,12 @@
 <?php
 
-$post = $_POST;
+$date_time = date('l jS \of F Y h:i:s A');
 
-print_r($post);
+print($date_time);
+
+// $post = $_POST;
+
+// print_r($post);
 // require_once("functions.php");
 
 // $arr = [1, 3, 4, 6, 7];
