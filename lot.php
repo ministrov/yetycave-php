@@ -10,7 +10,7 @@ if (!$connect) {
 } else {
   $sql = "SELECT character_code, name_category FROM categories";
   $result = mysqli_query($connect, $sql);
-  console_log($result);
+  print_r($result);
   if ($result) {
     $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
   } else {
@@ -31,9 +31,7 @@ if ($id) {
 
 $res = mysqli_query($connect, $sql);
 if ($res) {
-
   $lot = mysqli_fetch_assoc($res);
-  print_r($lot);
 } else {
   $error = mysqli_error($connect);
 }

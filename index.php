@@ -19,8 +19,6 @@ if (!$connect) {
     }
 }
 
-print_r($categories); 
-
 $sql = get_query_list_lots('2021-07-15');
 
 $res = mysqli_query($connect, $sql);
