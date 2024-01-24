@@ -25,3 +25,27 @@ function get_query_lot($id_lot)
   JOIN categories ON lots.category_id=categories.id
   WHERE lots.id=$id_lot;";
 }
+
+/**
+ * Возвращает массив категорий
+ * @param $con Подключение к MySQL
+ * @return $error Описание последней ошибки подключения
+ * @return array $categuries Ассоциативный массив с категориями лотов из базы данных
+*/
+
+function get_categories($con) {
+  if (!$con) {
+    $error = mysqli_connect_errno();
+    return $error;
+  } else {
+    $sql = "SELECT id, character_code, name_category FROM categories;";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+      $categories = get_arrow($result);
+      return $categories;
+    } else {
+      $error = mysqli_error($con);
+      return $error;
+    }
+  }
+}
