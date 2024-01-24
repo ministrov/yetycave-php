@@ -1,8 +1,24 @@
 <?php
 
-$date_time = date('l jS \of F Y h:i:s A');
+$headers_keys = [
+  "Язык браузера" => "ACCEPT_LANGUAGE",
+  "Страница перехода" => "REFERER",
+  "Поддерживаемый контент" => "ACCEPT",
+  "Браузер и ОС пользователя" => "USER_AGENT",
+  "Домен сайта" => "HOST",
+];
 
-print($date_time);
+foreach ($headers_keys as $name => $key) {
+  $server_key = "HTTP_" . $key;
+
+  if (isset($_SERVER[$server_key])) {
+    $value = $_SERVER[$server_key];
+    print("<b>$name</b>: $value<br>");
+  }
+}
+// $date_time = date('l jS \of F Y h:i:s A');
+
+// print($date_time);
 
 // $post = $_POST;
 
