@@ -1,11 +1,5 @@
 <?php
-$db = [
-  "host" => "localhost",
-  "user" => "root",
-  "password" => "",
-  "database" => "yeticave"
-];
-
-$connect = mysqli_connect($db["host"], $db["user"], $db["password"], $db["database"]);
-
+require_once("functions.php");
+$connect = mysqli_connect("localhost", "root", "", "yeticave");
 mysqli_set_charset($connect, "utf8");
+

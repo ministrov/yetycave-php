@@ -1,14 +1,64 @@
 <?php
 
-$peace = 'World';
-
-$msg = "Hello $peace";
-
-function show_message(string $txt) {
-  print($txt);
+function printArgs($arg_1 = '', $arg_2 = '', $arg_3 = '') {
+  echo 'Аргумент 1: ' . $arg_1 . PHP_EOL . '<br>';
+  echo 'Аргумент 2: ' . $arg_2 . PHP_EOL . '<br>';
+  echo 'Аргумент 3: ' . $arg_3 . PHP_EOL . '<br>';
 }
 
-show_message($msg);
+// printArgs(1, 3, 4) or die('OOOPs');
+
+// die();
+
+// $headers_keys = [
+//   "Язык браузера" => "ACCEPT_LANGUAGE",
+//   "Страница перехода" => "REFERER",
+//   "Поддерживаемый контент" => "ACCEPT",
+//   "Браузер и ОС пользователя" => "USER_AGENT",
+//   "Домен сайта" => "HOST",
+// ];
+
+// foreach ($headers_keys as $name => $key) {
+//   $server_key = "HTTP_" . $key;
+
+//   if (isset($_SERVER[$server_key])) {
+//     $value = $_SERVER[$server_key];
+//     print("<b>$name</b>: $value<br>");
+//   }
+// }
+// $date_time = date('l jS \of F Y h:i:s A');
+
+// print($date_time);
+
+// $post = $_POST;
+
+// print_r($post);
+// require_once("functions.php");
+
+// $arr = [1, 3, 4, 6, 7];
+
+// foreach ($arr as $item) {
+//   console_log($item);
+// }
+
+// $header = $_SERVER['HTTP_ACCEPT'];
+// $query_parameter = $_GET;
+
+// print_r($header . "<br>");
+// print_r($query_parameter);
+// $header = headers_list();
+
+// print_r($header);
+
+// $peace = 'World';
+
+// $msg = "Hello $peace";
+
+// function show_message(string $txt) {
+//   print($txt);
+// }
+
+// show_message($msg);
 
 // $arr = array(1, 2, 5, 6);
 

@@ -1,5 +1,5 @@
 <?php
-// require_once("testing.php");
+require_once("testing.php");
 require_once("helpers.php");
 require_once("functions.php");
 require_once("data.php");
@@ -26,7 +26,7 @@ $res = mysqli_query($connect, $sql);
 if ($res) {
     $goods = mysqli_fetch_all($res, MYSQLI_ASSOC);
 } else {
-    $error = mysqli_errno($connect);
+    $error = mysqli_error($connect);
 }
 
 $page_content = include_template("main.php", [
