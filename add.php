@@ -8,12 +8,6 @@ require_once("models.php");
 $categories = get_categories($connect);
 $categories_id = array_column($categories, "id");
 
-foreach ($categories_id as $item) {
-  print_r(var_dump($item));
-}
-
-// print_r($categories_id);
-
 $page_content = include_template("main-add.php", [
   "categories" => $categories
 ]);
@@ -23,10 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $errors = [];
 
   $rules = [
-    "category" => function ($value, $categories_id) {
+    "category" => function ($value) use ($categories_id) {
       return validate_category($value, $categories_id);
     },
     "lot-rate" => function ($value) {
+      print($value);
       return validate_number($value);
     },
     "lot-step" => function ($value) {
@@ -50,6 +45,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     true
   );
 
+  foreach ($lot as $field => $value) {
+    if (isset($rules[$field])) {
+      $rule = $rules[$field];
+      $errors[$field] = $rule($value);
+    }
+    if (in_array($field, $required) && empty($value)) {
+      $errors[$field] = "Поле $field нужно заполнить";
+    }
+  }
+
+  $errors = array_filter($errors);
+
+  if (!empty($_FILES["lot_img"]["name"])) {
+    $tmp_name = $_FILES["lot_img"]["tmp_name"];
+    $path = $_FILES["lot_img"]["name"];
+
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $file_type = finfo_file($finfo, $tmp_name);
+    if ($file_type === "image/jpeg") {
+      $ext = ".jpg";
+    } else if ($file_type === "image/png") {
+      $ext = ".png";
+    };
+    if ($ext) {
+      $filename = uniqid() . $ext;
+      $lot["path"] = "uploads/" . $filename;
+      move_uploaded_file($_FILES["lot_img"]["tmp_name"], "uploads/" . $filename);
+    } else {
+      $errors["lot_img"] = "Допустимые форматы файлов: jpg, jpeg, png";
+    }
+  } else {
+    $errors["lot_img"] = "Вы не загрузили изображение";
+  }
+
   if (count($errors)) {
     $page_content = include_template("main-add.php", [
       "categories" => $categories,
@@ -59,7 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     $sql = get_query_create_lot(2);
     $stmt = db_get_prepare_stmt_version($con, $sql, $lot);
-    // $res = mysqli_stmt_execute($stmt);
+    // $res = mysqli_stmt_execute($stmt); Error !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    print_r(var_dump($stmt));
 
     if ($res) {
       $lot_id = mysqli_insert_id($con);
@@ -70,10 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-// $page_head = include_template("head.php", [
-//   "title" => "Добавить лот"
-// ]);
-
 $layout_content = include_template("layout-add.php", [
   "content" => $page_content,
   "categories" => $categories,
@@ -81,5 +108,4 @@ $layout_content = include_template("layout-add.php", [
   "user_name" => $user_name
 ]);
 
-// print($page_head);
 print($layout_content);

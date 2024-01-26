@@ -80,7 +80,7 @@ function db_get_prepare_stmt_version($link, $sql, $data = [])
     $types = '';
     $stmt_data = [];
 
-    foreach ($data as $key => $value) {
+    foreach ($data as $value) {
       $type = 's';
 
       if (is_int($value)) {
@@ -150,14 +150,13 @@ function validate_category($id, $allowed_list)
 function validate_number($num)
 {
   if (!empty($num)) {
-    $num *= 1;
-
+    // $num *= 1;
     if (is_int($num) && $num > 0) {
       return NULL;
     }
     return "Содержимое поля должно быть целым числом больше ноля";
   }
-}
+};
 
 /**
  * Проверяет что дата окончания торгов не меньше одного дня
