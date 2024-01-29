@@ -1,10 +1,14 @@
 <?php
 
-function printArgs($arg_1 = '', $arg_2 = '', $arg_3 = '') {
-  echo 'Аргумент 1: ' . $arg_1 . PHP_EOL . '<br>';
-  echo 'Аргумент 2: ' . $arg_2 . PHP_EOL . '<br>';
-  echo 'Аргумент 3: ' . $arg_3 . PHP_EOL . '<br>';
-}
+$consumers = array(12, 33, 555, 66);
+
+print_r($consumers);
+
+// function printArgs($arg_1 = '', $arg_2 = '', $arg_3 = '') {
+//   echo 'Аргумент 1: ' . $arg_1 . PHP_EOL . '<br>';
+//   echo 'Аргумент 2: ' . $arg_2 . PHP_EOL . '<br>';
+//   echo 'Аргумент 3: ' . $arg_3 . PHP_EOL . '<br>';
+// }
 
 // printArgs(1, 3, 4) or die('OOOPs');
 

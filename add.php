@@ -21,11 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       return validate_category($value, $categories_id);
     },
     "lot-rate" => function ($value) {
-      print($value);
-      return validate_number($value);
+      $int_value = (int) $value;
+      return validate_number($int_value);
     },
     "lot-step" => function ($value) {
-      return validate_number($value);
+      $int_value = (int) $value;
+      return validate_number($int_value);
     },
     "lot-date" => function ($value) {
       return validate_date($value);
@@ -85,21 +86,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       "lot" => $lot,
       "errors" => $errors
     ]);
+    // print_r($errors,  "<br>");
+    print_r($lot,  "<br>");
   } else {
     $sql = get_query_create_lot(2);
-    $stmt = db_get_prepare_stmt_version($con, $sql, $lot);
-    // $res = mysqli_stmt_execute($stmt); Error !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    print_r(var_dump($stmt));
+    $stmt = db_get_prepare_stmt_version($connect, $sql, $lot);
+    // $res = mysqli_stmt_execute($stmt);
+    print_r($res);
 
     if ($res) {
-      $lot_id = mysqli_insert_id($con);
+      $lot_id = mysqli_insert_id($connect);
       header("Location: /lot.php?id=" . $lot_id);
     } else {
-      $error = mysqli_error($con);
+      $error = mysqli_error($connect);
     }
   }
 }
+
+// $page_content = include_template("main-add.php", [
+//   "categories" => $categories,
+//   "lot" => $lot,
+//   "errors" => $errors
+// ]);
 
 $layout_content = include_template("layout-add.php", [
   "content" => $page_content,

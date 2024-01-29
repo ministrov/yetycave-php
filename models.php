@@ -30,7 +30,7 @@ function get_query_lot($id_lot)
  * Формирует SQL-запрос для создания нового лота
  * @param integer $user_id id пользователя
  * @return string SQL-запрос
- */
+*/
 
 function get_query_create_lot($user_id)
 {

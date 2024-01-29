@@ -11,19 +11,6 @@ $page_404 = include_template("404.php", [
   "categories" => $categories
 ]);
 
-// if (!$connect) {
-//   $error = mysqli_connect_error();
-// } else {
-//   $sql = "SELECT character_code, name_category FROM categories";
-//   $result = mysqli_query($connect, $sql);
-//   print_r($result);
-//   if ($result) {
-//     $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//   } else {
-//     $error = mysqli_error($connect);
-//   }
-// }
-
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if ($id) {
