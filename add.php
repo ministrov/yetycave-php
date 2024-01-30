@@ -21,12 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       return validate_category($value, $categories_id);
     },
     "lot-rate" => function ($value) {
-      $int_value = (int) $value;
-      return validate_number($int_value);
+      return validate_number($value);
     },
     "lot-step" => function ($value) {
-      $int_value = (int) $value;
-      return validate_number($int_value);
+      return validate_number($value);
     },
     "lot-date" => function ($value) {
       return validate_date($value);
@@ -89,8 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     $sql = get_query_create_lot(2);
     $stmt = db_get_prepare_stmt_version($connect, $sql, $lot);
-    $res = mysqli_stmt_execute($stmt);
-    print_r($res);
+    // $res = mysqli_stmt_execute($stmt);
 
     if ($res) {
       $lot_id = mysqli_insert_id($connect);

@@ -16,8 +16,7 @@
  * @return string Добавить к итоговой строке пробел и знак рубля — ₽.
  */
 
-function get_format_number($number)
-{
+function get_format_number($number) {
   $number = ceil($number);
 
   if ($number > 1000) {
@@ -34,8 +33,7 @@ function get_format_number($number)
  * @return array
  */
 
-function get_time_left($date)
-{
+function get_time_left($date) {
   date_default_timezone_set('Europe/Moscow');
 
   $final_date = date_create($date);
@@ -67,8 +65,11 @@ function get_time_left($date)
  *
  * @return stmt Подготовленное выражение
  */
-function db_get_prepare_stmt_version($link, $sql, $data = [])
-{
+function 
+
+
+
+db_get_prepare_stmt_version($link, $sql, $data = []) {
   $stmt = mysqli_prepare($link, $sql);
 
   if ($stmt === false) {
@@ -113,8 +114,7 @@ function db_get_prepare_stmt_version($link, $sql, $data = [])
  * @return array
  */
 
-function get_arrow($result_query)
-{
+function get_arrow($result_query) {
   $row = mysqli_num_rows($result_query);
 
   if ($row === 1) {
@@ -134,8 +134,7 @@ function get_arrow($result_query)
  * @return string Текст сообщения об ошибке
  */
 
-function validate_category($id, $allowed_list)
-{
+function validate_category($id, $allowed_list) {
   if (!in_array($id, $allowed_list)) {
     return "Указана несуществующая категория";
   }
@@ -147,11 +146,12 @@ function validate_category($id, $allowed_list)
  * @return string Текст сообщения об ошибке
  */
 
-function validate_number($num)
-{
-  if (!empty($num)) {
+function validate_number($num) {
+  $int_value = (int) $num;
+  // $int_value = (int) $value;
+  if (!empty($int_value)) {
     // $num *= 1;
-    if (is_int($num) && $num > 0) {
+    if (is_int($int_value) && $int_value > 0) {
       return NULL;
     }
     return "Содержимое поля должно быть целым числом больше ноля";
@@ -163,8 +163,7 @@ function validate_number($num)
  * @param string $date дата которую ввел пользователь в форму
  * @return string Текст сообщения об ошибке
  */
-function validate_date($date)
-{
+function validate_date($date) {
   if (is_date_valid($date)) {
     $now = date_create("now");
     $d = date_create($date);
@@ -179,8 +178,7 @@ function validate_date($date)
   }
 };
 
-function console_log($data)
-{
+function console_log($data) {
   echo '<script>';
   echo 'console.log(' . json_encode($data) . ')';
   echo '</script>';
