@@ -86,12 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       "lot" => $lot,
       "errors" => $errors
     ]);
-    // print_r($errors,  "<br>");
-    print_r($lot,  "<br>");
   } else {
     $sql = get_query_create_lot(2);
     $stmt = db_get_prepare_stmt_version($connect, $sql, $lot);
-    // $res = mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_execute($stmt);
     print_r($res);
 
     if ($res) {
@@ -102,12 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 }
-
-// $page_content = include_template("main-add.php", [
-//   "categories" => $categories,
-//   "lot" => $lot,
-//   "errors" => $errors
-// ]);
 
 $layout_content = include_template("layout-add.php", [
   "content" => $page_content,

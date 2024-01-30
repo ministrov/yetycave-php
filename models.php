@@ -42,7 +42,8 @@ function get_query_create_lot($user_id)
  * @param $con Подключение к MySQL
  * @return [Array | String] $categuries Ассоциативный массив с категориями лотов из базы данных
  * или описание последней ошибки подключения
- */
+*/
+
 function get_categories($con)
 {
   if (!$con) {
