@@ -60,3 +60,35 @@ function get_categories($con)
     return $error;
   }
 }
+
+/**
+ * Возвращает массив данных пользователей: адрес электронной почты и имя
+ * @param $con Подключение к MySQL
+ * @return [Array | String] $users_data Двумерный массив с именами и емэйлами пользователей или описание последней ошибки подключения
+*/
+
+function get_users_data($con) {
+  if (!$con) {
+    $error = mysqli_connect_error();
+    return $error;
+  } else {
+    $sql = "SELECT email, user_name FROM users;";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+      $users_data = get_arrow($result);
+      return $users_data;
+    }
+    $error = mysqli_error($con);
+    return $error;
+  }
+}
+
+/**
+ * Формирует SQL- запрос для регистрации нового пользователя
+ * @param integer $user_id id пользовотеля
+ * @return string SQL- запрос
+*/
+
+function get_query_create_user() {
+  return "INSERT INTO users (date_registration, email, user_password, user_name, contacts) VALUES (NOW(), ?, ?, ?, ?;";
+}
