@@ -1,24 +1,24 @@
 <?php
 
-function generatePassword(int $length = 0): string {
-  if ($length < 1) return '';
+// function generatePassword(int $length = 0): string {
+//   if ($length < 1) return '';
 
-  $arr = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
-  );
+//   $arr = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+//     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+//     '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
+//   );
 
-  $password = '';
-  $max = count($arr) - 1;
+//   $password = '';
+//   $max = count($arr) - 1;
 
-  for ($i = 0; $i < $length; $i++) {
-    $password .= $arr[mt_rand(0, $max)];
-  }
+//   for ($i = 0; $i < $length; $i++) {
+//     $password .= $arr[mt_rand(0, $max)];
+//   }
 
-  return $password;
-}
+//   return $password;
+// }
 
-echo generatePassword(12);
+// echo generatePassword(12);
 // generat a random number
 // echo mt_rand(1, 10);
 // echo mt_rand(1, 10);

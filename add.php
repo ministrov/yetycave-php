@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $rules = [
     "category" => function ($value) use ($categories_id) {
+      print($categories_id);
       return validate_category($value, $categories_id);
     },
     "lot-rate" => function ($value) {
