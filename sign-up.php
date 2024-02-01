@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $sql = get_query_create_user();
       $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT);
-      $stmp = db_get_prepare_stmt_version($connect, $sql, $user);
-      // $res = mysqli_stmt_execute($stmp);
+      $stmp = db_get_prepare_stmt($connect, $sql, $user);
+      $res = mysqli_stmt_execute($stmp);
 
       if ($res) {
         header("Location: /login.php");

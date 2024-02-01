@@ -87,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
   } else {
     $sql = get_query_create_lot(2);
-    $stmt = db_get_prepare_stmt_version($connect, $sql, $lot);
-    // $res = mysqli_stmt_execute($stmt);
+    $stmt = db_get_prepare_stmt($connect, $sql, $lot);
+    $res = mysqli_stmt_execute($stmt);
 
     if ($res) {
       $lot_id = mysqli_insert_id($connect);
