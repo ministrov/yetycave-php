@@ -90,5 +90,5 @@ function get_users_data($con) {
 */
 
 function get_query_create_user() {
-  return "INSERT INTO users (date_registration, email, user_password, user_name, contacts) VALUES (NOW(), ?, ?, ?, ?;";
+  return "INSERT INTO users (date_registration, email, user_password, user_name, contacts) VALUES (NOW(), ?, ?, ?, ?);";
 }
