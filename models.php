@@ -92,3 +92,27 @@ function get_users_data($con) {
 function get_query_create_user() {
   return "INSERT INTO users (date_registration, email, user_password, user_name, contacts) VALUES (NOW(), ?, ?, ?, ?);";
 }
+
+/**
+ * Возвращает массив данных пользователя: id, адрес электронной почты, имя и хеш пароля
+ * @param $con Подключение к MySQL
+ * @param $email введенный адрес электронной почты
+ * @return [Array | String] $users_data массив с данными пользователя: id, адрес электронной почты, имя и хеш пароля или описание последней ошибки подключения
+*/
+
+function get_login($con, $email) {
+  if (!$con) {
+    $error = mysqli_connect_error();
+    return $error;
+  } else {
+    $sql = "SELECT id, email, user_name, user_password FROM users WHERE email = '$email'";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+      $user_data = get_arrow($result);
+      return $user_data;
+    }
+
+    $error = mysqli_error($con);
+    return $error;
+  }
+}
