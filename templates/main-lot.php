@@ -1,7 +1,3 @@
-<?php
-require_once("data.php");
-?>
-
 <main>
   <section class="lot-item container">
     <h2><?= $lot["title"]; ?></h2>

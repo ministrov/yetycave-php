@@ -11,6 +11,18 @@ $page_content = include_template("main-sign-up.php", [
   "categories" => $categories
 ]);
 
+if (!$is_auth) {
+  $layout_content = include_template("layout.php", [
+    "content" => $page_content,
+    "categories" => $categories,
+    "title" => "Доступ запрещен",
+    "is_auth" => $is_auth,
+    "user_name" => $user_name
+  ]);
+  print($layout_content);
+  die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $required = ["email", "password", "name", "message"];
   $errors = [];
