@@ -53,13 +53,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ]);
   } else {
     $user_data = get_login($connect, $user_info["email"]);
+    if ($user_data) {
+      if (password_hash($user_data["email"], $user_data["password"])) {
+        $is_session = session_start();
+        $_SESSION['name'] = $user_data["user_name"];
+        $_SESSION['id'] = $user_data["id"];
+
+        header("Location: /index.php");
+      } else {
+        $errors["password"] = "Вы ввели не верный пароль";
+      }
+    } else {
+      $errors["email"] = "Пользователь с таким e-mail не зарегистрирован";
+    }
+
+    if (count($errors)) {
+      $page_content = include_template("main-login.php", [
+        "categories" => $categories,
+        "user_info" => $user_info,
+        "errors" => $errors
+      ]);
+    }
   }
 }
 
 $layout_content = include_template("layout.php", [
   "content" => $page_content,
   "categories" => $categories,
-  "title" => "Вход",
+  "title" => "Регистрация",
   "is_auth" => $is_auth,
   "user_name" => $user_name
 ]);

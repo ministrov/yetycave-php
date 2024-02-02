@@ -99,9 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-$layout_content = include_template("layout-add.php", [
+$layout_content = include_template("layout.php", [
   "content" => $page_content,
   "categories" => $categories,
+  "title" => "Добавить лот",
   "is_auth" => $is_auth,
   "user_name" => $user_name
 ]);

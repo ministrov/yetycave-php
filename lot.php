@@ -37,7 +37,7 @@ $page_content = include_template("main-lot.php", [
   "lot" => $lot
 ]);
 
-$layout_content = include_template("layout-lot.php", [
+$layout_content = include_template("layout.php", [
   "content" => $page_content,
   "categories" => $categories,
   "title" => $lot['title'],
