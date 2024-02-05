@@ -1,5 +1,33 @@
 <?php
 
+$var = "String";
+
+function print_info($str, $array = []) {
+  if (var_dump($str) === 'string') {
+    print($str);
+  } 
+
+  if (var_dump($array) === 'array') {
+    print_r($array);
+  }
+}
+
+print_info($var);
+print_info("<br>");
+
+$categories = [
+  "Видеоигры", "Животные", "Люди", "Наука", "Приколы",
+  "Спорт", "Фейлы", "Фильмы и анимация"
+];
+
+$rand_key = array_rand($categories);
+
+print($rand_key);
+print_info("<br>");
+
+foreach($categories as $key => $value) {
+  print("$key: $value" . "<br>");
+}
 // function generatePassword(int $length = 0): string {
 //   if ($length < 1) return '';
 
