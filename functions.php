@@ -65,6 +65,8 @@ function get_time_left($date) {
 function get_arrow($result_query) {
   $row = mysqli_num_rows($result_query);
 
+  // print_r($row);
+
   if ($row === 1) {
     $arrow = mysqli_fetch_assoc($result_query);
   } else if ($row > 1) {

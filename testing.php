@@ -1,33 +1,101 @@
 <?php
 
-$var = "String";
-
-function print_info($str, $array = []) {
-  if (var_dump($str) === 'string') {
-    print($str);
-  } 
-
-  if (var_dump($array) === 'array') {
-    print_r($array);
-  }
-}
-
-print_info($var);
-print_info("<br>");
-
-$categories = [
-  "Видеоигры", "Животные", "Люди", "Наука", "Приколы",
-  "Спорт", "Фейлы", "Фильмы и анимация"
+$cat = [
+  'gender' => 'male',
+  'name' => 'keks',
+  'color' => 'yellow',
+  'age' => 2
 ];
 
-$rand_key = array_rand($categories);
+// Получить все ключи из массива
+$keys = array_keys($cat);
 
-print($rand_key);
-print_info("<br>");
+// Получить последний ключ
+$last_key = array_pop($cat);
 
-foreach($categories as $key => $value) {
-  print("$key: $value" . "<br>");
-}
+print_r($keys);
+print("<br>");
+print_r($last_key);
+
+// // Получить значение по этому ключу
+// $last_val = $gif[$last_key];
+
+// $opts = [21, "Венцеслав", true, 176];
+// list($age, $name, $is_male, $height) = $opts;
+
+// // Разделили значения в строке знаком "точка с запятой"
+// $salad_str = "Руккола;Маслины;Листья салата;Помидоры";
+// $salad_arr = explode(";", $salad_str);
+
+// var_dump($salad_arr);
+
+// $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
+
+// $cats[]  = "Победы";
+
+// array_unshift($cats, "Спорт");
+
+// $cats_length = count($cats);
+
+// $last_index = $cats_length - 1;
+
+// print_r($cats);
+
+// print("Last value: " . $cats[$last_index]);
+
+// print($last_index);
+
+// $cats_str = implode(",", $cats);
+
+// print($cats_str);
+
+// $is_val_exist = in_array("Люди", $cats);
+
+// print($is_val_exist);
+
+// $cat_count = count($cat);
+
+// print($cat_count);
+// print($cat);
+
+// $cat_gender = $cat['gender'];
+
+// $new_cat_gender = $cat['gender'] = 'female';
+
+// print($cat_gender);
+// // print($new_cat_gender);
+// print("<br>");
+// print_r($cat);
+
+// $var = "String";
+
+// function print_info($str, $array = []) {
+//   if (var_dump($str) === 'string') {
+//     print($str);
+//   } 
+
+//   if (var_dump($array) === 'array') {
+//     print_r($array);
+//   }
+// }
+
+// print_info($var);
+// print_info("<br>");
+
+// $categories = [
+//   "Видеоигры", "Животные", "Люди", "Наука", "Приколы",
+//   "Спорт", "Фейлы", "Фильмы и анимация"
+// ];
+
+// $rand_key = array_rand($categories);
+
+// print($rand_key);
+// print_info("<br>");
+
+// foreach($categories as $key => $value) {
+//   print("$key: $value" . "<br>");
+// }
+
 // function generatePassword(int $length = 0): string {
 //   if ($length < 1) return '';
 
