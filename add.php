@@ -12,6 +12,18 @@ $page_content = include_template("main-add.php", [
   "categories" => $categories
 ]);
 
+if (!$is_auth) {
+  $layout_content = include_template("layout.php", [
+    "content" => $page_content,
+    "categories" => $categories,
+    "title" => "Доступ запрещен",
+    "is_auth" => $is_auth,
+    "user_name" => $user_name
+  ]);
+  print($layout_content);
+  die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $required = ["lot-name", "category", "message", "lot-rate", "lot-step", "lot-date"];
   $errors = [];
@@ -87,8 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
   } else {
     $sql = get_query_create_lot(2);
-    $stmt = db_get_prepare_stmt_version($connect, $sql, $lot);
-    // $res = mysqli_stmt_execute($stmt);
+    $stmt = db_get_prepare_stmt($connect, $sql, $lot);
+    $res = mysqli_stmt_execute($stmt);
 
     if ($res) {
       $lot_id = mysqli_insert_id($connect);
@@ -99,9 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-$layout_content = include_template("layout-add.php", [
+$layout_content = include_template("layout.php", [
   "content" => $page_content,
   "categories" => $categories,
+  "title" => "Добавить лот",
   "is_auth" => $is_auth,
   "user_name" => $user_name
 ]);

@@ -14,7 +14,7 @@
  * @param int $number 
  *
  * @return string Добавить к итоговой строке пробел и знак рубля — ₽.
- */
+*/
 
 function get_format_number($number) {
   $number = ceil($number);
@@ -31,7 +31,7 @@ function get_format_number($number) {
  * Возвращеет количество целых часов и остатка минут от настоящего времени до даты
  * @param string $date Дата истечения времени
  * @return array
- */
+*/
 
 function get_time_left($date) {
   date_default_timezone_set('Europe/Moscow');
@@ -57,62 +57,10 @@ function get_time_left($date) {
 }
 
 /**
- * Создает подготовленное выражение на основе готового SQL запроса и переданных данных
- *
- * @param $link mysqli Ресурс соединения
- * @param $sql string SQL запрос с плейсхолдерами вместо значений
- * @param array $data Данные для вставки на место плейсхолдеров
- *
- * @return stmt Подготовленное выражение
- */
-function 
-
-
-
-db_get_prepare_stmt_version($link, $sql, $data = []) {
-  $stmt = mysqli_prepare($link, $sql);
-
-  if ($stmt === false) {
-    $errorMsg = 'Не удалось инициализировать подготовленное выражение: ' . mysqli_error($link);
-    die($errorMsg);
-  }
-
-  if ($data) {
-    $types = '';
-    $stmt_data = [];
-
-    foreach ($data as $value) {
-      $type = 's';
-
-      if (is_int($value)) {
-        $type = 'i';
-      } else if (is_double($value)) {
-        $type = 'd';
-      }
-
-      if ($type) {
-        $types .= $type;
-        $stmt_data[] = $value;
-      }
-    }
-
-    $values = array_merge([$stmt, $types], $stmt_data);
-    mysqli_stmt_bind_param(...$values);
-
-    if (mysqli_errno($link) > 0) {
-      $errorMsg = 'Не удалось связать подготовленное выражение с параметрами: ' . mysqli_error($link);
-      die($errorMsg);
-    }
-  }
-
-  return $stmt;
-}
-
-/**
  * Возвращает массив из объекта результата запроса
  * @param object $result_query mysqli Результат запроса к базе данных
  * @return array
- */
+*/
 
 function get_arrow($result_query) {
   $row = mysqli_num_rows($result_query);
@@ -132,7 +80,7 @@ function get_arrow($result_query) {
  * @param int $id категория, которую ввел пользователь в форму
  * @param array $allowed_list Список существующих категорий
  * @return string Текст сообщения об ошибке
- */
+*/
 
 function validate_category($id, $allowed_list) {
   if (!in_array($id, $allowed_list)) {
@@ -144,7 +92,7 @@ function validate_category($id, $allowed_list) {
  * Проверяет что содержимое поля является числом больше нуля
  * @param string $num число которое ввел пользователь в форму
  * @return string Текст сообщения об ошибке
- */
+*/
 
 function validate_number($num) {
   $int_value = (int) $num;
@@ -163,6 +111,7 @@ function validate_number($num) {
  * @param string $date дата которую ввел пользователь в форму
  * @return string Текст сообщения об ошибке
 */
+
 function validate_date($date) {
   if (is_date_valid($date)) {
     $now = date_create("now");

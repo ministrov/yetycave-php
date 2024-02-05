@@ -1,4 +1,5 @@
 <?php
+session_start();
 
-$is_auth = rand(0, 1);
-$user_name = 'Anton'; // укажите здесь ваше имя
+$is_auth = isset($_SESSION['name']);
+$user_name = $_SESSION['name'];

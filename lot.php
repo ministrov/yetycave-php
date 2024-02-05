@@ -34,10 +34,11 @@ if (!$lot) {
 
 $page_content = include_template("main-lot.php", [
   "categories" => $categories,
-  "lot" => $lot
+  "lot" => $lot,
+  "is_auth" => $is_auth,
 ]);
 
-$layout_content = include_template("layout-lot.php", [
+$layout_content = include_template("layout.php", [
   "content" => $page_content,
   "categories" => $categories,
   "title" => $lot['title'],

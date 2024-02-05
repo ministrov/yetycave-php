@@ -11,6 +11,18 @@ $page_content = include_template("main-sign-up.php", [
   "categories" => $categories
 ]);
 
+if (!$is_auth) {
+  $layout_content = include_template("layout.php", [
+    "content" => $page_content,
+    "categories" => $categories,
+    "title" => "Доступ запрещен",
+    "is_auth" => $is_auth,
+    "user_name" => $user_name
+  ]);
+  print($layout_content);
+  die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $required = ["email", "password", "name", "message"];
   $errors = [];
@@ -74,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $sql = get_query_create_user();
       $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT);
-      $stmp = db_get_prepare_stmt_version($connect, $sql, $user);
-      // $res = mysqli_stmt_execute($stmp);
+      $stmp = db_get_prepare_stmt($connect, $sql, $user);
+      $res = mysqli_stmt_execute($stmp);
 
       if ($res) {
         header("Location: /login.php");
