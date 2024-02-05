@@ -1,21 +1,39 @@
 <?php
+require_once("helpers.php");
+require_once("functions.php");
+require_once("data.php");
+require_once("init.php");
+require_once("models.php");
 
-$cat = [
-  'gender' => 'male',
-  'name' => 'keks',
-  'color' => 'yellow',
-  'age' => 2
-];
+$cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
 
-// Получить все ключи из массива
-$keys = array_keys($cat);
+print_r($cats);
 
-// Получить последний ключ
-$last_key = array_pop($cat);
+$page_content = include_template("main-test.php", [
+  "cats" => $cats
+]);
 
-print_r($keys);
-print("<br>");
-print_r($last_key);
+$layout_content = include_template("layout.php", [
+  "content" => $page_content
+]);
+
+print($page_content);
+// $cat = [
+//   'gender' => 'male',
+//   'name' => 'keks',
+//   'color' => 'yellow',
+//   'age' => 2
+// ];
+
+// // Получить все ключи из массива
+// $keys = array_keys($cat);
+
+// // Получить последний ключ
+// $last_key = array_pop($cat);
+
+// print_r($keys);
+// print("<br>");
+// print_r($last_key);
 
 // // Получить значение по этому ключу
 // $last_val = $gif[$last_key];
