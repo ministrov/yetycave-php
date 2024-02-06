@@ -7,7 +7,18 @@ require_once("models.php");
 
 $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
 
-print_r($cats);
+function get_greeting_function() {
+  $time_of_day = "morning";
+
+  return ( function($name) use (&$time_of_day) {
+    $time_of_day = ucfirst($time_of_day);
+    return ( "Good $time_of_day, $name!");
+  });
+};
+
+$greeting_func = get_greeting_function();
+
+echo $greeting_func("Fred");
 
 $page_content = include_template("main-test.php", [
   "cats" => $cats
@@ -18,6 +29,14 @@ $layout_content = include_template("layout.php", [
 ]);
 
 print($page_content);
+
+// $anonymous_func = function($name, $age) {
+//   return "My name is $name, and my age is $age";
+// };
+
+// print($anonymous_func('Anton', 40));
+
+
 // $cat = [
 //   'gender' => 'male',
 //   'name' => 'keks',

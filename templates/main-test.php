@@ -1,5 +1,5 @@
-<main class="container">
-  <div class="cats-wrapper">
+<main>
+  <div class="cats-wrapper container">
     <ul class="cats-list">
       <?php foreach ($cats as $value) : ?>
         <li>

@@ -65,7 +65,7 @@ function get_time_left($date) {
 function get_arrow($result_query) {
   $row = mysqli_num_rows($result_query);
 
-  // print_r($row);
+  print_r($row);
 
   if ($row === 1) {
     $arrow = mysqli_fetch_assoc($result_query);
@@ -98,7 +98,6 @@ function validate_category($id, $allowed_list) {
 
 function validate_number($num) {
   $int_value = (int) $num;
-  // $int_value = (int) $value;
   if (!empty($int_value)) {
     // $num *= 1;
     if (is_int($int_value) && $int_value > 0) {
