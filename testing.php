@@ -5,30 +5,35 @@ require_once("data.php");
 require_once("init.php");
 require_once("models.php");
 
+$categories = get_categories($connect);
 $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
-
-function get_greeting_function() {
-  $time_of_day = "morning";
-
-  return ( function($name) use (&$time_of_day) {
-    $time_of_day = ucfirst($time_of_day);
-    return ( "Good $time_of_day, $name!");
-  });
-};
-
-$greeting_func = get_greeting_function();
-
-echo $greeting_func("Fred");
 
 $page_content = include_template("main-test.php", [
   "cats" => $cats
 ]);
 
 $layout_content = include_template("layout.php", [
-  "content" => $page_content
+  "content" => $page_content,
+  "categories" => $categories,
+  "title" => "Тестовая страница",
+  "is_auth" => $is_auth,
+  "user_name" => $user_name
 ]);
 
-print($page_content);
+print($layout_content);
+
+// function get_greeting_function() {
+//   $time_of_day = "morning";
+
+//   return (function ($name) use (&$time_of_day) {
+//     $time_of_day = ucfirst($time_of_day);
+//     return ("Good $time_of_day, $name!");
+//   });
+// };
+
+// $greeting_func = get_greeting_function();
+
+// echo $greeting_func("Fred");
 
 // $anonymous_func = function($name, $age) {
 //   return "My name is $name, and my age is $age";
