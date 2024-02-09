@@ -96,7 +96,6 @@ function validate_category($id, $allowed_list) {
 
 function validate_number($num) {
   $int_value = (int) $num;
-  // $int_value = (int) $value;
   if (!empty($int_value)) {
     // $num *= 1;
     if (is_int($int_value) && $int_value > 0) {
