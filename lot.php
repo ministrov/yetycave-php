@@ -7,7 +7,7 @@ require_once("models.php");
 
 $categories = get_categories($connect);
 
-$page_404 = include_template("404.php", [
+$page_content = include_template("main-404.php", [
   "categories" => $categories
 ]);
 
@@ -16,7 +16,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if ($id) {
   $sql = get_query_lot($id);
 } else {
-  print($page_404);
+  print($page_content);
   die();
 }
 
@@ -32,8 +32,13 @@ if (!$lot) {
   die();
 }
 
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
+
 $page_content = include_template("main-lot.php", [
   "categories" => $categories,
+  "navigation" => $navigation,
   "lot" => $lot,
   "is_auth" => $is_auth,
 ]);
