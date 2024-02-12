@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>404 Страница не найдена</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../css/normalize.min.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/flatpickr.min.css" rel="stylesheet">
+  <title>404 Страница не найдена</title>
 </head>
 
 <body>
@@ -46,15 +47,7 @@
     </header>
 
     <main>
-      <nav class="nav">
-        <ul class="nav__list container">
-          <?php foreach ($categories as $category) : ?>
-            <li class="nav__item">
-              <a href="pages/all-lots.html"><?= $category["name_category"]; ?></a>
-            </li>
-          <?php endforeach; ?>
-        </ul>
-      </nav>
+      <?= $main_nav; ?>
       <section class="lot-item container">
         <h2>404 Страница не найдена</h2>
         <p>Данной страницы не существует на сайте.</p>
