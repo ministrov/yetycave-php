@@ -93,6 +93,22 @@ function get_query_create_user() {
 }
 
 /**
+ * Записывает в БД данные пользователя из формы
+ * @param $link mysqli Ресурс соединения
+ * @param array $data Данные пользователя, полученные из формы
+ * @return bool $res Возвращает true в случае успешного выполнения
+ */
+function add_user_database($link, $data = [])
+{
+  $sql = "INSERT INTO users (date_registration, email, user_password, user_name, contacts) VALUES (NOW(), ?, ?, ?, ?);";
+  $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+
+  $stmt = db_get_prepare_stmt($link, $sql, $data);
+  $res = mysqli_stmt_execute($stmt);
+  return $res;
+}
+
+/**
  * Возвращает массив данных пользователя: id, адрес электронной почты, имя и хеш пароля
  * @param $con Подключение к MySQL
  * @param $email введенный адрес электронной почты

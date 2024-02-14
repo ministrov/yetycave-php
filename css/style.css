@@ -187,6 +187,7 @@ main.container {
 }
 
 .main-header__search input[type="search"]:focus {
+  outline: none;
   border-color: #45abde;
 }
 

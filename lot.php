@@ -16,7 +16,7 @@ $layout_content = include_template("layout.php", [
   "categories" => $categories,
   "title" => "Страница не найдена",
   "is_auth" => $is_auth,
-  "user_name" => $user_name
+  "user_name" => $user_name ?? ''
 ]);
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -56,7 +56,7 @@ $layout_content = include_template("layout.php", [
   "categories" => $categories,
   "title" => $lot['title'],
   "is_auth" => $is_auth,
-  "user_name" => $user_name
+  "user_name" => $user_name ?? ''
 ]);
 
 print($layout_content);

@@ -7,11 +7,20 @@ require_once("models.php");
 
 $categories = get_categories($connect);
 
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
+
 $page_content = include_template("main-sign-up.php", [
+  "navigation" => $navigation,
   "categories" => $categories
 ]);
 
 if (!$is_auth) {
+  $page_content = include_template("main-403.php", [
+    "navigation" => $navigation,
+    "categories" => $categories
+  ]);
   $layout_content = include_template("layout.php", [
     "content" => $page_content,
     "categories" => $categories,
@@ -80,19 +89,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (count($errors)) {
       $page_content = include_template("main-sign-up.php", [
         "categories" => $categories,
+        "navigation" => $navigation,
         "user" => $user,
         "errors" => $errors
       ]);
     } else {
-      $sql = get_query_create_user();
-      $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT);
-      $stmp = db_get_prepare_stmt($connect, $sql, $user);
-      $res = mysqli_stmt_execute($stmp);
-
+      $res = add_user_database($connect, $user);
       if ($res) {
         header("Location: /login.php");
       } else {
-        $error = mysqli_error($connect);
+        $error = mysqli_error($con);
       }
     }
   }
