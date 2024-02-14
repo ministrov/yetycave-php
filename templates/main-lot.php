@@ -1,4 +1,5 @@
 <main>
+  <?= $navigation; ?>
   <section class="lot-item container">
     <h2><?= $lot["title"]; ?></h2>
     <div class="lot-item__content">

@@ -19,13 +19,20 @@ if ($search) {
   $pages = range(1, $pages_count);
 
   $goods = get_found_lots($connect, $search, $page_items, $offset);
+  print_r($search);
+  print_r($goods);
 }
+
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
 
 $page_content = include_template("main-search.php", [
   "categories" => $categories,
+  "navigation" => $navigation,
   "search" => $search,
   "goods" => $goods,
-  "pagination" => $pagination,
+  "pagination" => $pagination ?? null,
   "pages_count" => $pages_count,
   "pages" => $pages,
   "cur_page" => $cur_page

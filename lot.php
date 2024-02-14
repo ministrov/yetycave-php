@@ -11,6 +11,14 @@ $page_content = include_template("main-404.php", [
   "categories" => $categories
 ]);
 
+$layout_content = include_template("layout.php", [
+  "content" => $page_content,
+  "categories" => $categories,
+  "title" => "Страница не найдена",
+  "is_auth" => $is_auth,
+  "user_name" => $user_name
+]);
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if ($id) {
@@ -28,7 +36,7 @@ if ($res) {
 }
 
 if (!$lot) {
-  print($page_404);
+  print($layout_content);
   die();
 }
 
