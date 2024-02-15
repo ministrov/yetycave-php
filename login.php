@@ -6,8 +6,12 @@ require_once("init.php");
 require_once("models.php");
 
 $categories = get_categories($connect);
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
 
 $page_content = include_template("main-login.php", [
+  "navigation" => $navigation,
   "categories" => $categories
 ]);
 
@@ -29,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     "email" => FILTER_DEFAULT,
     "password" => FILTER_DEFAULT
   ], true);
-
-  // print_r($user_info);
 
   foreach ($user_info as $field => $value) {
     if (isset($rules[$field])) {
@@ -82,7 +84,7 @@ $layout_content = include_template("layout.php", [
   "categories" => $categories,
   "title" => "Регистрация",
   "is_auth" => $is_auth,
-  "user_name" => $user_name
+  "user_name" => $user_name ?? null
 ]);
 
 print($layout_content);

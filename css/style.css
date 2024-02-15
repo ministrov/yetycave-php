@@ -167,6 +167,7 @@ main.container {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  max-height: 45px;
 }
 
 .main-header__logo {
@@ -184,9 +185,11 @@ main.container {
   width: 100%;
   padding: 8px 19px 9px 19px;
   border: 1px solid #ffffff;
+  border-radius: 3px;
 }
 
 .main-header__search input[type="search"]:focus {
+  outline: none;
   border-color: #45abde;
 }
 
@@ -1052,9 +1055,9 @@ input:invalid .form__error{
 }
 
 .lot-item__form .button {
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  /* -webkit-align-self: flex-end;
+  -ms-flex-item-align: end; */
+  align-self: center;
   padding: 6px 20px 7px;
   height: 38px;
 }

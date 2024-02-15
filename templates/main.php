@@ -1,13 +1,8 @@
-<?php
-require_once("functions.php");
-?>
-
 <main class="container">
   <section class="promo">
     <h2 class="promo__title">Нужен стафф для катки?</h2>
     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
     <ul class="promo__list">
-      <!--заполните этот список из массива категорий-->
       <?php foreach ($categories as $category) : ?>
         <li class="promo__item promo__item--<?= $category["character_code"]; ?>">
           <a class="promo__link" href="pages/all-lots.html"><?= $category["name_category"]; ?></a>
@@ -20,7 +15,6 @@ require_once("functions.php");
       <h2>Открытые лоты</h2>
     </div>
     <ul class="lots__list">
-      <!--заполните этот список из массива с товарами-->
       <?php foreach ($goods as $good) : ?>
         <li class="lots__item lot">
           <div class="lot__image">

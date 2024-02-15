@@ -3,7 +3,7 @@
     <ul class="cats-list">
       <?php foreach ($cats as $value) : ?>
         <li class="cats-list__item">
-          <?= "Categories: $value" ?>
+          <?= "Categories: $value"; ?>
         </li>
       <?php endforeach; ?>
     </ul>

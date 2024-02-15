@@ -7,8 +7,16 @@ require_once("models.php");
 
 $categories = get_categories($connect);
 
-$page_404 = include_template("404.php", [
+$page_content = include_template("main-404.php", [
   "categories" => $categories
+]);
+
+$layout_content = include_template("layout.php", [
+  "content" => $page_content,
+  "categories" => $categories,
+  "title" => "Страница не найдена",
+  "is_auth" => $is_auth,
+  "user_name" => $user_name ?? ''
 ]);
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -16,7 +24,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if ($id) {
   $sql = get_query_lot($id);
 } else {
-  print($page_404);
+  print($page_content);
   die();
 }
 
@@ -28,12 +36,17 @@ if ($res) {
 }
 
 if (!$lot) {
-  print($page_404);
+  print($layout_content);
   die();
 }
 
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
+
 $page_content = include_template("main-lot.php", [
   "categories" => $categories,
+  "navigation" => $navigation,
   "lot" => $lot,
   "is_auth" => $is_auth,
 ]);
@@ -43,7 +56,7 @@ $layout_content = include_template("layout.php", [
   "categories" => $categories,
   "title" => $lot['title'],
   "is_auth" => $is_auth,
-  "user_name" => $user_name
+  "user_name" => $user_name ?? ''
 ]);
 
 print($layout_content);

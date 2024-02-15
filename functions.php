@@ -17,6 +17,7 @@
 */
 
 function get_format_number($number) {
+  $number = (int) $number;
   $number = ceil($number);
 
   if ($number > 1000) {
@@ -32,21 +33,21 @@ function get_format_number($number) {
  * @param string $date Дата истечения времени
  * @return array
 */
-
-function get_time_left($date) {
+function get_time_left($date)
+{
   date_default_timezone_set('Europe/Moscow');
-
   $final_date = date_create($date);
-  $cur_date = date_create();
-
+  $cur_date = date_create("now");
+  if ($cur_date >= $final_date) {
+    $res = ["00", "00"];
+    return $res;
+  }
   $diff = date_diff($final_date, $cur_date);
   $format_diff = date_interval_format($diff, "%d %H %I");
-
   $arr = explode(" ", $format_diff);
 
   $hours = $arr[0] * 24 + $arr[1];
   $minutes = intval($arr[2]);
-
   $hours = str_pad($hours, 2, "0", STR_PAD_LEFT);
   $minutes = str_pad($minutes, 2, "0", STR_PAD_LEFT);
 
@@ -60,11 +61,10 @@ function get_time_left($date) {
  * Возвращает массив из объекта результата запроса
  * @param object $result_query mysqli Результат запроса к базе данных
  * @return array
-*/
-
-function get_arrow($result_query) {
+ */
+function get_arrow($result_query)
+{
   $row = mysqli_num_rows($result_query);
-
   if ($row === 1) {
     $arrow = mysqli_fetch_assoc($result_query);
   } else if ($row > 1) {
@@ -155,8 +155,22 @@ function validate_length($value, $min, $max) {
   }
 }
 
+/**
+ * Выводит вконсоль браузера то значение, что вы передали ф-ции
+ * @param mixed $data
+ * @return $data
+*/
 function console_log($data) {
   echo '<script>';
   echo 'console.log(' . json_encode($data) . ')';
   echo '</script>';
 }
+
+// /**
+//  * @param mixed $str
+//  * 
+//  * @return [type]
+//  */
+// function get_some_name($str) {
+//   return "Get the $str name";
+// }

@@ -8,11 +8,14 @@ require_once("models.php");
 $categories = get_categories($connect);
 $categories_id = array_column($categories, "id");
 
-$page_content = include_template("main-add.php", [
+$navigation = include_template("main-nav.php", [
   "categories" => $categories
 ]);
 
 if (!$is_auth) {
+  $page_content = include_template("main-403.php", [
+    "navigation" => $navigation
+  ]);
   $layout_content = include_template("layout.php", [
     "content" => $page_content,
     "categories" => $categories,
@@ -23,6 +26,11 @@ if (!$is_auth) {
   print($layout_content);
   die();
 }
+
+$page_content = include_template("main-add.php", [
+  "categories" => $categories,
+  "navigation" => $navigation
+]);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $required = ["lot-name", "category", "message", "lot-rate", "lot-step", "lot-date"];
