@@ -120,7 +120,6 @@ main.container {
 
 .button {
   display: block;
-  max-height: 28px;
   padding: 9px 32px;
   background-color: #45abde;
   color: #ffffff;
@@ -168,6 +167,7 @@ main.container {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  max-height: 45px;
 }
 
 .main-header__logo {
@@ -1055,9 +1055,9 @@ input:invalid .form__error{
 }
 
 .lot-item__form .button {
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  /* -webkit-align-self: flex-end;
+  -ms-flex-item-align: end; */
+  align-self: center;
   padding: 6px 20px 7px;
   height: 38px;
 }

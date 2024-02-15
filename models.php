@@ -164,7 +164,7 @@ function get_found_lots($link, $words, $limit, $offset)
  * @param string $words ключевые слова введенные ползователем в форму поиска
  * @return [int | String] $count Количество лотов, в названии или описании которых есть такие слова
  * или описание последней ошибки подключения
- */
+*/
 function get_count_lots($link, $words)
 {
   $sql = "SELECT COUNT(*) as cnt FROM lots WHERE MATCH(title, lot_description) AGAINST(?);";
@@ -179,4 +179,37 @@ function get_count_lots($link, $words)
   }
   $error = mysqli_error($link);
   return $error;
+}
+
+/**
+ * Возвращает массив ставок пользователя
+ * @param $con Подключение к MySQL
+ * @param int $id Id пользователя
+ * @return [Array | String] $list_bets Ассоциативный массив ставок
+ *  пользователя из базы данных
+ * или описание последней ошибки подключения
+*/
+function get_bets($con, $id)
+{
+  if (!$con) {
+    $error = mysqli_connect_error();
+    return $error;
+  } else {
+    $sql = "SELECT DATE_FORMAT(bets.date_bet, '%d.%m.%y %H:%i') AS date_bet, bets.price_bet, lots.title, lots.lot_description, lots.img, lots.date_finish, lots.id, categories.name_category
+        FROM bets
+        JOIN lots ON bets.lot_id=lots.id
+        JOIN users ON bets.user_id=users.id
+        JOIN categories ON lots.category_id=categories.id
+        WHERE bets.user_id=$id
+        ORDER BY bets.date_bet DESC;";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+      $list_bets = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+      print_r($list_bets);
+      return $list_bets;
+    }
+    $error = mysqli_error($con);
+    return $error;
+  }
 }
