@@ -19,7 +19,7 @@ if ($search) {
   $pages = range(1, $pages_count);
 
   $goods = get_found_lots($connect, $search, $page_items, $offset);
-  print_r($search);
+  print_r(gettype($search));
   print_r($goods);
 }
 

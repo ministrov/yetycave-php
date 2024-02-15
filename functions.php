@@ -17,6 +17,7 @@
 */
 
 function get_format_number($number) {
+  $number = (int) $number;
   $number = ceil($number);
 
   if ($number > 1000) {
@@ -66,12 +67,9 @@ function get_arrow($result_query)
   $row = mysqli_num_rows($result_query);
   if ($row === 1) {
     $arrow = mysqli_fetch_assoc($result_query);
-    // print_r($arrow);
   } else if ($row > 1) {
     $arrow = mysqli_fetch_all($result_query, MYSQLI_ASSOC);
   }
-
-  // print_r($arrow);
 
   return $arrow;
 }
