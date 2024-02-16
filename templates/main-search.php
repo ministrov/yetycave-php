@@ -8,13 +8,13 @@
           <?php foreach ($goods as $good) : ?>
             <li class="lots__item lot">
               <div class="lot__image">
-                <img src="<?= $good["img"]; ?>" width="350" height="260" alt="<?= $good["title"]; ?>">
+                <img src="<?= $good["img"]; ?>" width="350" height="260" alt="">
               </div>
               <div class="lot__info">
-                <span class="lot__category"><?= $good["name_category"]; ?></span>
+                <span class="lot__category"><?= print($good["name_category"]); ?></span>
                 <h3 class="lot__title">
-                  <a class="text-link" href="lot.php?id=<?= $good["id"]; ?>">
-                    <?= $good["title"]; ?>
+                  <a class="text-link" href="lot.php?id=<?= print($good["id"]); ?>">
+                    <?= print($good["title"]); ?>
                   </a>
                 </h3>
                 <div class="lot__state">
@@ -22,7 +22,7 @@
                     <span class="lot__amount">Стартовая цена</span>
                     <span class="lot__cost"><?= get_format_number($good["start_price"]); ?></span>
                   </div>
-                  <?php $res = get_time_left($good["date_finish"]); ?>
+                  <?php $res = print(get_time_left($good["date_finish"])); ?>
                   <div class="lot__timer timer <?php if ($res[0] < 1) : ?>timer--finishing<?php endif; ?>">
                     <?= "$res[0] : $res[1]"; ?>
                   </div>
@@ -49,7 +49,7 @@
         <a <?php if ($cur_page < $pages_count) : ?> href="search.php?search=<?= $search; ?>&page=<?= $next; ?>" <?php endif; ?>>Вперед</a>
       </li>
     </ul>
-    <!--<? $panagination ?? null; ?>-->
+    <?= print($panagination ?? null); ?>
     <?php else : ?>
       <h2>Ничего не найдено по вашему запросу</h2>
     <?php endif; ?>

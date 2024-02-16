@@ -166,11 +166,3 @@ function console_log($data) {
   echo '</script>';
 }
 
-// /**
-//  * @param mixed $str
-//  * 
-//  * @return [type]
-//  */
-// function get_some_name($str) {
-//   return "Get the $str name";
-// }

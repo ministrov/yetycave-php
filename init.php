@@ -33,25 +33,25 @@ mysqli_set_charset($connect, "utf8");
 //   }
 // }
 
-class Person {
-  public $name;
-  public $sur_name;
+// class Person {
+//   public $name;
+//   public $sur_name;
 
-  public function __construct($name, $sur_name)
-  {
-    $this->name = $name;
-    $this->sur_name = $sur_name;
-  }
+//   public function __construct($name, $sur_name)
+//   {
+//     $this->name = $name;
+//     $this->sur_name = $sur_name;
+//   }
 
-  public function getFullName() {
-    return print("My name: $this->name <br> My surname: $this->sur_name");
-  }
-}
+//   public function getFullName() {
+//     return print("My name: $this->name <br> My surname: $this->sur_name");
+//   }
+// }
 
-$man = new Person('Anton', 'Zhilin');
+// $man = new Person('Anton', 'Zhilin');
 
-print(gettype($man));
+// print(gettype($man));
 
-print('<br>');
+// print('<br>');
 
-print($man->getFullName());
+// print($man->getFullName());

@@ -10,8 +10,6 @@ $search = $_GET["search"];
 
 if ($search) {
   $items_count = get_count_lots($connect, $search);
-
-  print_r($items_count);
   $cur_page = $_GET["page"] ?? 1;
   $page_items = 9;
   $pages_count = ceil($items_count / $page_items);
@@ -19,8 +17,6 @@ if ($search) {
   $pages = range(1, $pages_count);
 
   $goods = get_found_lots($connect, $search, $page_items, $offset);
-  print_r(gettype($search));
-  print_r($goods);
 }
 
 $navigation = include_template("navigation.php", [

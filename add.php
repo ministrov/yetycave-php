@@ -21,7 +21,7 @@ if (!$is_auth) {
     "categories" => $categories,
     "title" => "Доступ запрещен",
     "is_auth" => $is_auth,
-    "user_name" => $user_name
+    "user_name" => $user_name ?? null
   ]);
   print($layout_content);
   die();

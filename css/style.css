@@ -786,6 +786,7 @@ main.container {
 
 .form__item input:focus,
 .form__item textarea:focus {
+  outline: none;
   border-color: #45abde;
 }
 
