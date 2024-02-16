@@ -5,8 +5,6 @@ require_once("data.php");
 require_once("init.php");
 require_once("models.php");
 
-// echo phpversion();
-
 $categories = get_categories($connect);
 $search = $_GET["search"];
 
@@ -18,13 +16,6 @@ if ($search) {
   $offset = ($cur_page - 1) * $page_items;
   $pages = range(1, $pages_count);
 
-  // print_r($pages);
-
-  // if (!$goods) {
-  //   exit();
-  // } else {
-  //   $goods = get_found_lots($connect, $search, $page_items, $offset);
-  // }
   $goods = get_found_lots($connect, $search, $page_items, $offset);
 }
 

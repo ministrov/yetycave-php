@@ -80,6 +80,7 @@ CREATE TABLE lots (
   FOREIGN KEY (category_id) REFERENCES categories(id),
   FULLTEXT (title, lot_description)
 );
+ALTER TABLE lots ADD FULLTEXT (title, lot_description);
 CREATE TABLE bets (
   id INT AUTO_INCREMENT PRIMARY KEY,
   date_bet DATETIME DEFAULT CURRENT_TIMESTAMP,

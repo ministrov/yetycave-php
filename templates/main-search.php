@@ -8,17 +8,17 @@
         <?php foreach ($goods as $good): ?>
         <li class="lots__item lot">
           <div class="lot__image">
-            <img src="<?= $good["img"]; ?>" width="350" height="260" alt="">
+            <img src="<?= $good["img"] ?? null; ?>" width="350" height="260" alt="">
           </div>
           <div class="lot__info">
-            <span class="lot__category"><?= $good["name_category"]; ?></span>
-            <h3 class="lot__title"><a class="text-link" href="lot.php?id=<?= $good["id"]; ?>"><?= htmlspecialchars($good["title"]); ?></a></h3>
+            <span class="lot__category"><?= $good["name_category"] ?? null; ?></span>
+            <h3 class="lot__title"><a class="text-link" href="lot.php?id=<?= $good["id"] ?? null; ?>"><?= htmlspecialchars($good["title"]) ?? null; ?></a></h3>
               <div class="lot__state">
                 <div class="lot__rate">
                   <span class="lot__amount">Стартовая цена</span>
-                  <span class="lot__cost"><?= get_format_number(htmlspecialchars($good["start_price"])); ?></span>
+                  <span class="lot__cost"><?= get_format_number(htmlspecialchars($good["start_price"])) ?? null; ?></span>
                 </div>
-                <?php $res = get_time_left(htmlspecialchars($good["date_finish"])) ?>
+                <?php $res = get_time_left(htmlspecialchars($good["date_finish"])) ?? null; ?>
                 <div class="lot__timer timer <?php if ($res[0] < 1): ?>timer--finishing<?php endif; ?>">
                   <?= "$res[0] : $res[1]"; ?>
                 </div>
@@ -45,7 +45,7 @@
         <a <?php if ($cur_page < $pages_count) : ?> href="search.php?search=<?= $search; ?>&page=<?= $next; ?>" <?php endif; ?>>Вперед</a>
       </li>
     </ul>
-    <?= print($panagination ?? null); ?>
+    <?= print($pagination ?? null); ?>
     <?php else : ?>
       <h2>Ничего не найдено по вашему запросу</h2>
     <?php endif; ?>
