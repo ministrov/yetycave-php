@@ -26,8 +26,8 @@
     <div class="form__item form__item--wide <?= $classname; ?>">
       <label for="message">Описание <sup>*</sup></label>
       <textarea id="message" name="message" placeholder="Напишите описание лота">
-      <?= $lot["message"] ?? ""; ?>
-    </textarea>
+        <?= $lot["message"] ?? ""; ?>
+      </textarea>
       <span class="form__error"><?= $errors["message"] ?></span>
     </div>
     <?php $classname = isset($errors["lot_img"]) ? "form__item--invalid" : ""; ?>

@@ -8,7 +8,7 @@ require_once("models.php");
 $categories = get_categories($connect);
 $categories_id = array_column($categories, "id");
 
-$navigation = include_template("main-nav.php", [
+$navigation = include_template("navigation.php", [
   "categories" => $categories
 ]);
 
@@ -120,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $layout_content = include_template("layout.php", [
   "content" => $page_content,
+  "navigation" => $navigation,
   "categories" => $categories,
   "title" => "Добавить лот",
   "is_auth" => $is_auth,

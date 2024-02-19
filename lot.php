@@ -21,8 +21,6 @@ $layout_content = include_template("layout.php", [
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-print_r(gettype($id));
-
 if ($id) {
   $sql = get_query_lot($id);
 } else {
@@ -43,9 +41,11 @@ if (!$lot) {
 }
 
 $history = get_bets_history($connect, $id);
-print_r($history);
+// print_r($history[0]);
 $current_price = max($lot["start_price"], $history["price_bet"]);
 $min_bet = $current_price + $lot["step"];
+// print("<br>");
+// print_r($current_price, $min_bet);
 
 $navigation = include_template("navigation.php", [
   "categories" => $categories
