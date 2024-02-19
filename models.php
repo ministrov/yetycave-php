@@ -152,7 +152,7 @@ function get_found_lots($link, $words, $limit, $offset)
   $res = mysqli_stmt_get_result($stmt);
   if ($res) {
     $goods = get_arrow($res);
-    // print_r(var_dump($goods["id"]));
+    print_r(var_dump($goods));
     return $goods;
   }
   $error = mysqli_error($link);

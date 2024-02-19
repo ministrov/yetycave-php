@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once("helpers.php");
 require_once("functions.php");
 require_once("data.php");
@@ -19,8 +20,8 @@ if ($search) {
   $goods = get_found_lots($connect, $search, $page_items, $offset);
 }
 
-// foreach ($goods as $key => $good) {
-//   print_r("$key : $good");
+// foreach ($goods as $good) {
+//   print_r(var_dump($good));
 //   print("<br>");
 // }
 
@@ -33,7 +34,7 @@ $page_content = include_template("main-search.php", [
   "navigation" => $navigation,
   "search" => $search,
   "goods" => $goods,
-  "pagination" => $pagination ?? null,
+  // "pagination" => $pagination ?? null,
   "pages_count" => $pages_count,
   "pages" => $pages,
   "cur_page" => $cur_page
