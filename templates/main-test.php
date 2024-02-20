@@ -1,4 +1,5 @@
 <main>
+  <?= $navigation; ?>
   <div class="cats-wrapper container">
     <ul class="cats-list">
       <?php foreach ($cats as $value) : ?>

@@ -5,10 +5,27 @@ require_once("data.php");
 require_once("init.php");
 require_once("models.php");
 
+$person = new Person("Bob", "Gilroy");
+
+print_r(gettype($person));
+
+print('<br>');
+
+print($person->getFullName());
+
+print('<br>');
+
+$cherry = new Car("Cherry Tiggo 8 Pro", "White");
+print_r($cherry->makeSignal());
+
 $categories = get_categories($connect);
 $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
 
 $page_content = include_template("main-test.php", [
+  "navigation" => $navigation,
   "cats" => $cats
 ]);
 

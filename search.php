@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 require_once("helpers.php");
 require_once("functions.php");
 require_once("data.php");
