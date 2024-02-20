@@ -49,16 +49,21 @@ class Person {
 }
 
 class Car {
-  public $model;
+  public $brand;
   public $color;
+  public static $max_speed = 230;
 
-  public function __construct($model, $color)
+  public function __construct($brand, $color)
   {
-    $this->model = $model;
+    $this->brand = $brand;
     $this->color = $color;
   }
 
   public function makeSignal() {
-    echo "BEEEppp - the car model is $this->model and the color is $this->color";
+    echo "BEEEppp - the car model is $this->brand and the color is $this->color";
   }
+
+  // public static function getMaxSpeed() {
+  //   return $this->max_speed;
+  // }
 }

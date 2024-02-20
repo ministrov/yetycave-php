@@ -18,6 +18,17 @@ print('<br>');
 $cherry = new Car("Cherry Tiggo 8 Pro", "White");
 print_r($cherry->makeSignal());
 
+print('<br>');
+
+$kaiy = new Car("Kaiy M6", "Purple");
+
+print_r(var_dump($kaiy));
+
+print('<br>');
+
+print_r(Car::$max_speed);
+
+
 $categories = get_categories($connect);
 $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
 $navigation = include_template("navigation.php", [
