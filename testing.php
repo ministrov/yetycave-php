@@ -4,8 +4,11 @@ require_once("functions.php");
 require_once("data.php");
 require_once("init.php");
 require_once("models.php");
+require __DIR__ . '/vendor/autoload.php';
 
 $person = new Person("Bob", "Gilroy");
+
+dump($person);
 
 print_r(gettype($person));
 
@@ -35,6 +38,10 @@ $navigation = include_template("navigation.php", [
   "categories" => $categories
 ]);
 
+print('<br>');
+
+dump($categories);
+
 $page_content = include_template("main-test.php", [
   "navigation" => $navigation,
   "cats" => $cats
@@ -47,6 +54,8 @@ $layout_content = include_template("layout.php", [
   "is_auth" => $is_auth,
   "user_name" => $user_name
 ]);
+
+dump($layout_content);
 
 print($layout_content);
 
