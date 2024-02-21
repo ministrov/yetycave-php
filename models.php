@@ -168,18 +168,12 @@ function get_found_lots($link, $words, $limit, $offset)
 */
 function get_count_lots($link, $words)
 {
-  $sql = "SELECT COUNT(*) as cnt FROM lots WHERE MATCH(title, lot_description) AGAINST(?);";
-
-  // print_r($sql);
+  $sql = "SELECT COUNT(*) as cnt FROM lots WHERE MATCH(title, lot_description) AGAINST(?);";;
 
   $stmt = mysqli_prepare($link, $sql);
-  print_r($stmt);
-  // print_r("<br>");
   mysqli_stmt_bind_param($stmt, 's', $words);
   mysqli_stmt_execute($stmt);
   $res = mysqli_stmt_get_result($stmt);
-  // print_r($res);
-  // print_r("<br>");
   if ($res) {
     $count = mysqli_fetch_assoc($res)["cnt"];
     return $count;
