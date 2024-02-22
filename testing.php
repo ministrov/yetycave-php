@@ -4,32 +4,33 @@ require_once("functions.php");
 require_once("data.php");
 require_once("init.php");
 require_once("models.php");
-require __DIR__ . '/vendor/autoload.php';
+// require __DIR__ . '/vendor/autoload.php';
 
-$person = new Person("Bob", "Gilroy");
+// print("<h2>$counter_value<h2/>");
+// $person = new Person("Bob", "Gilroy");
 
-dump($person);
+// dump($person);
 
-print_r(gettype($person));
+// print_r(gettype($person));
 
-print('<br>');
+// print('<br>');
 
-print($person->getFullName());
+// print($person->getFullName());
 
-print('<br>');
+// print('<br>');
 
-$cherry = new Car("Cherry Tiggo 8 Pro", "White");
-print_r($cherry->makeSignal());
+// $cherry = new Car("Cherry Tiggo 8 Pro", "White");
+// print_r($cherry->makeSignal());
 
-print('<br>');
+// print('<br>');
 
-$kaiy = new Car("Kaiy M6", "Purple");
+// $kaiy = new Car("Kaiy M6", "Purple");
 
-print_r(var_dump($kaiy));
+// print_r(var_dump($kaiy));
 
-print('<br>');
+// print('<br>');
 
-print_r(Car::$max_speed);
+// print_r(Car::$max_speed);
 
 
 $categories = get_categories($connect);
@@ -38,9 +39,9 @@ $navigation = include_template("navigation.php", [
   "categories" => $categories
 ]);
 
-print('<br>');
+// print('<br>');
 
-dump($categories);
+// dump($categories);
 
 $page_content = include_template("main-test.php", [
   "navigation" => $navigation,
@@ -55,7 +56,7 @@ $layout_content = include_template("layout.php", [
   "user_name" => $user_name
 ]);
 
-dump($layout_content);
+// dump($layout_content);
 
 print($layout_content);
 

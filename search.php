@@ -4,12 +4,12 @@ require_once("functions.php");
 require_once("data.php");
 require_once("init.php");
 require_once("models.php");
-require __DIR__ . '/vendor/autoload.php';
+// require __DIR__ . '/vendor/autoload.php';
 
 $categories = get_categories($connect);
 $search = $_GET["search"];
 
-dump($search);
+// dump($search);
 
 if ($search) {
   $items_count = get_count_lots($connect, $search);
@@ -21,7 +21,7 @@ if ($search) {
 
   $goods = get_found_lots($connect, $search, $page_items, $offset);
 
-  dump($goods);
+  // dump($goods);
 }
 
 $navigation = include_template("navigation.php", [
@@ -38,8 +38,6 @@ $page_content = include_template("main-search.php", [
   "pages" => $pages,
   "cur_page" => $cur_page
 ]);
-
-dump($page_content);
 
 $layout_content = include_template("layout.php", [
   "content" => $page_content,

@@ -46,6 +46,8 @@
       </div>
     </header>
     <?= $content; ?>
+
+    <?= $counter_value; ?>
   </div>
 
   <footer class="main-footer">
