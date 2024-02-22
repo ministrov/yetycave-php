@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
+
 $connect = mysqli_connect("localhost", "root", "", "yeticave");
 mysqli_set_charset($connect, "utf8");
 
@@ -44,14 +46,32 @@ class Person {
   }
 
   public function getFullName() {
-    return print("My name: $this->name <br> My surname: $this->sur_name");
+    echo "My name: $this->name <br> My surname: $this->sur_name";
   }
 }
 
-$man = new Person('Anton', 'Zhilin');
+class Car {
+  public $brand;
+  public $color;
+  public static $max_speed = 230;
 
-print(gettype($man));
+  public function __construct($brand, $color)
+  {
+    $this->brand = $brand;
+    $this->color = $color;
+  }
 
-print('<br>');
+  public function makeSignal() {
+    echo "BEEEppp - the car model is $this->brand and the color is $this->color";
+  }
+}
 
-print($man->getFullName());
+// $db_helper = new DbHelper("localhost", "root", "", "yeticave");
+
+$person = new Person("Some", "Any");
+
+$bmw = new Car("X7", "White");
+
+// dump($connect);
+dump($person);
+dump($bmw);

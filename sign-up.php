@@ -16,7 +16,7 @@ $page_content = include_template("main-sign-up.php", [
   "categories" => $categories
 ]);
 
-if (!$is_auth) {
+if ($is_auth) {
   $page_content = include_template("main-403.php", [
     "navigation" => $navigation,
     "categories" => $categories
@@ -26,7 +26,7 @@ if (!$is_auth) {
     "categories" => $categories,
     "title" => "Доступ запрещен",
     "is_auth" => $is_auth,
-    "user_name" => $user_name ?? ''
+    "user_name" => $user_name ?? null
   ]);
   print($layout_content);
   die();
@@ -109,7 +109,7 @@ $layout_content = include_template("layout.php", [
   "categories" => $categories,
   "title" => "Регистрация",
   "is_auth" => $is_auth,
-  "user_name" => $user_name
+  "user_name" => $user_name ?? null
 ]);
 
 print($layout_content);

@@ -1,4 +1,5 @@
 <?php
+// require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Функция должна возвращать результат — отформатированную сумму вместе со знаком рубля
@@ -54,6 +55,8 @@ function get_time_left($date)
   $res[] = $hours;
   $res[] = $minutes;
 
+  // dump($res);
+
   return $res;
 }
 
@@ -67,10 +70,13 @@ function get_arrow($result_query)
   $row = mysqli_num_rows($result_query);
   if ($row === 1) {
     $arrow = mysqli_fetch_assoc($result_query);
+    // dump($arrow);
   } else if ($row > 1) {
     $arrow = mysqli_fetch_all($result_query, MYSQLI_ASSOC);
+    // dump($arrow);
   }
 
+  // dump($arrow);
   return $arrow;
 }
 
@@ -97,7 +103,6 @@ function validate_category($id, $allowed_list) {
 function validate_number($num) {
   $int_value = (int) $num;
   if (!empty($int_value)) {
-    // $num *= 1;
     if (is_int($int_value) && $int_value > 0) {
       return NULL;
     }
@@ -166,11 +171,3 @@ function console_log($data) {
   echo '</script>';
 }
 
-// /**
-//  * @param mixed $str
-//  * 
-//  * @return [type]
-//  */
-// function get_some_name($str) {
-//   return "Get the $str name";
-// }

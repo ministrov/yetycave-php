@@ -1,0 +1,6 @@
+{
+    "name": "new/yetycave",
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
+}

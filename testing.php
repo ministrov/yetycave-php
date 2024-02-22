@@ -4,11 +4,47 @@ require_once("functions.php");
 require_once("data.php");
 require_once("init.php");
 require_once("models.php");
+// require __DIR__ . '/vendor/autoload.php';
+
+// print("<h2>$counter_value<h2/>");
+// $person = new Person("Bob", "Gilroy");
+
+// dump($person);
+
+// print_r(gettype($person));
+
+// print('<br>');
+
+// print($person->getFullName());
+
+// print('<br>');
+
+// $cherry = new Car("Cherry Tiggo 8 Pro", "White");
+// print_r($cherry->makeSignal());
+
+// print('<br>');
+
+// $kaiy = new Car("Kaiy M6", "Purple");
+
+// print_r(var_dump($kaiy));
+
+// print('<br>');
+
+// print_r(Car::$max_speed);
+
 
 $categories = get_categories($connect);
 $cats = ["Животные", "Люди", "Наука", "Приколы", "Спорт", "Видеоигры"];
+$navigation = include_template("navigation.php", [
+  "categories" => $categories
+]);
+
+// print('<br>');
+
+// dump($categories);
 
 $page_content = include_template("main-test.php", [
+  "navigation" => $navigation,
   "cats" => $cats
 ]);
 
@@ -19,6 +55,8 @@ $layout_content = include_template("layout.php", [
   "is_auth" => $is_auth,
   "user_name" => $user_name
 ]);
+
+// dump($layout_content);
 
 print($layout_content);
 
